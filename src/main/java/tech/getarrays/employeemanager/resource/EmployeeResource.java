@@ -20,25 +20,25 @@ public class EmployeeResource {
     public EmployeeResource(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
-
+    @CrossOrigin( origins = "*" )
     @PostMapping("/upload")
     public void uploadImage(@RequestParam("imageFile") MultipartFile file) throws IOException {
         this.bytes = file.getBytes();
     }
 
-
+    @CrossOrigin( origins = "*" )
     @GetMapping("/all")
     public ResponseEntity<List<Employee>> getAllEmployees () {
         List<Employee> employees = employeeService.findAllEmployees();
         return new ResponseEntity<>(employees, HttpStatus.OK);
     }
-
+@CrossOrigin( origins = "*" )
     @GetMapping("/find/{id}")
     public ResponseEntity<Employee> getEmployeeById (@PathVariable("id") Long id) {
         Employee employee = employeeService.findEmployeeById(id);
         return new ResponseEntity<>(employee, HttpStatus.OK);
     }
-
+@CrossOrigin( origins = "*" )
     @PostMapping("/add")
     public ResponseEntity<Employee> addEmployee(@RequestBody Employee employee) {
         Employee newEmployee = employeeService.addEmployee(employee);
@@ -48,13 +48,13 @@ public class EmployeeResource {
 
         return new ResponseEntity<>(newEmployee, HttpStatus.CREATED);
     }
-
+@CrossOrigin( origins = "*" )
     @PutMapping("/update")
     public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee) {
         Employee updateEmployee = employeeService.updateEmployee(employee);
         return new ResponseEntity<>(updateEmployee, HttpStatus.OK);
     }
-
+@CrossOrigin( origins = "*" )
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteEmployee(@PathVariable("id") Long id) {
         employeeService.deleteEmployee(id);
