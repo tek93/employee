@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/employee")
+@CrossOrigin(origins = "*")
 public class EmployeeResource {
     private final EmployeeService employeeService;
     private byte[] bytes;
